@@ -240,7 +240,9 @@ export class ADKFrameworkIntegration {
             }
           }
 
-          consider if u even put a letter or dot before or after the json example "json{...}" or ".{...}", this will not work
+          Return ONLY valid JSON. Do not include markdown code fences, explanations, or extra text.
+The output must start with { and end with }.
+
 
           
           ### 📈 Supported Graph Types:
