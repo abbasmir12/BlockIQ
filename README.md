@@ -1,3 +1,4 @@
+![blockiqlogo](public/blockiq1.png)
 # BlockIQ
 
 Advanced Stacks blockchain analytics platform powered by AI agents and the ADK-TS framework. BlockIQ transforms complex blockchain data into natural conversations and interactive visualizations, making the Bitcoin economy accessible to everyone.
