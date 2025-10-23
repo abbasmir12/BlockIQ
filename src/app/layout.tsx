@@ -8,10 +8,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "AI Wallet Insights - Stacks Blockchain Analytics",
+  title: "BlockIQ - Stacks Blockchain Analytics",
   description: "Analyze any Stacks wallet address with AI-powered insights and interactive chat assistant",
   keywords: "Stacks, blockchain, wallet, analytics, AI, cryptocurrency",
-  authors: [{ name: "AI Wallet Insights" }],
+  authors: [{ name: "BlockIQ" }],
 };
 
 export const viewport = {

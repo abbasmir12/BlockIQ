@@ -1,4 +1,4 @@
-# AI Wallet Insights - Visual Analytics System
+# BlockIQ - Visual Analytics System
 
 ## Overview
 
