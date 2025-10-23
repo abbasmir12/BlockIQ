@@ -1,0 +1,27 @@
+{
+  "name": "blockiq-mcp-server",
+  "version": "1.0.0",
+  "description": "BlockIQ MCP Server - Real MCP implementation for Stacks blockchain analysis",
+  "type": "module",
+  "main": "blockiq-mcp-server.js",
+  "bin": {
+    "blockiq-mcp-server": "./blockiq-mcp-server.js"
+  },
+  "scripts": {
+    "start": "node blockiq-mcp-server.js",
+    "dev": "node --inspect blockiq-mcp-server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "blockchain",
+    "stacks",
+    "web3",
+    "analytics"
+  ],
+  "author": "BlockIQ Team",
+  "license": "MIT"
+}

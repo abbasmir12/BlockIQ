@@ -1,0 +1,37 @@
+{
+  "name": "ai-wallet-insights",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
+    "start": "next start",
+    "lint": "eslint",
+    "adk:test": "node -e \"console.log('Testing ADK-TS import...'); import('@iqai/adk').then(() => console.log('✅ ADK-TS import successful')).catch(e => console.error('❌ ADK-TS import failed:', e))\"",
+    "adk:version": "node -e \"import('@iqai/adk').then(adk => console.log('ADK-TS version:', adk.version || 'unknown')).catch(e => console.error('Error:', e))\""
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^2.0.23",
+    "@ai-sdk/huggingface": "^0.0.4",
+    "@iqai/adk": "^0.5.0",
+    "ai": "^5.0.76",
+    "clsx": "^2.1.0",
+    "framer-motion": "^11.0.0",
+    "lucide-react": "^0.460.0",
+    "next": "15.5.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "tailwind-merge": "^2.2.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.4",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
