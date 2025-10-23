@@ -8,7 +8,7 @@ BlockIQ currently operates on the Stacks Blockchain Testnet for demonstration an
 
 ## What is BlockIQ?
 
-BlockIQ is an intelligent blockchain analytics platform that allows users to analyze Stacks wallet data through natural language conversations. Instead of struggling with raw blockchain explorers or writing complex queries, users can simply ask questions and receive intelligent, contextual answers with beautiful visualizations.
+BlockIQ is an intelligent blockchain analytics platform that allows users to analyze Blockchain wallet data through natural language conversations. Instead of struggling with raw blockchain explorers or writing complex queries, users can simply ask questions and receive intelligent, contextual answers with beautiful visualizations.
 
 The platform leverages the ADK-TS (Agent Development Kit for TypeScript) framework to orchestrate multiple AI agents, each specialized for different types of blockchain analysis. Combined with a custom Model Context Protocol (MCP) server, BlockIQ provides unprecedented access to blockchain data through conversational AI.
 
