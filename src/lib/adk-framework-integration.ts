@@ -240,7 +240,7 @@ export class ADKFrameworkIntegration {
             }
           }
 
-          consider if u even put a letter or dot before or after the json example "json{...}", this will not work
+          consider if u even put a letter or dot before or after the json example "json{...}" or ".{...}", this will not work
 
           
           ### 📈 Supported Graph Types:

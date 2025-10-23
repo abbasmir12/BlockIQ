@@ -26,7 +26,12 @@ export async function POST(request: NextRequest) {
       
       const result = await ADKFrameworkIntegration.processQuery(
         prefetchQuery, 
-        { address, totalTransactions }, 
+        { 
+          address, 
+          totalTransactions,
+          balance: { stx: { balance: '0', total_sent: '0', total_received: '0', lock_tx_id: '', locked: '0', lock_height: 0, burnchain_lock_height: 0, burnchain_unlock_height: 0 }, fungible_tokens: {}, non_fungible_tokens: {} },
+          transactions: []
+        }, 
         { adkProvider: 'google', adkModel: 'gemini-2.5-flash' }
       );
       
