@@ -1,5 +1,5 @@
-AI WALLET INSIGHTS - COMPLETE SYSTEM ARCHITECTURE
-=====================================================
+BLOCKIQ - COMPLETE SYSTEM ARCHITECTURE
+========================================
 
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
 │                                   USER INTERFACE                                    │
@@ -9,18 +9,23 @@ AI WALLET INSIGHTS - COMPLETE SYSTEM ARCHITECTURE
 │  │   Component     │  │   Component     │  │   Component     │  │   Component     │ │
 │  │                 │  │                 │  │                 │  │                 │ │
 │  │ • Address Input │  │ • Balance Info  │  │ • AI Chat       │  │ • Graph Panel   │ │
-│  │ • Validation    │  │ • TX History    │  │ • Agent Toggle  │  │ • Examples      │ │
-│  │ • Submit        │  │ • AI Summary    │  │ • Graph Display │  │ • Tutorials     │ │
+│  │ • Validation    │  │ • TX History    │  │ • Graph Display │  │ • Examples      │ │
+│  │ • Submit        │  │ • AI Summary    │  │ • Message Flow  │  │ • Tutorials     │ │
 │  └─────────────────┘  └─────────────────┘  └─────────────────┘  └─────────────────┘ │
 │                                      │                                              │
 │                                      ▼                                              │
 │  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
 │  │                        GraphRenderer Component                                  │ │
 │  │  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐      │ │
-│  │  │   VBC   │ │   HBC   │ │   PG    │ │   LC    │ │   AC    │ │   DG    │      │ │
-│  │  │ Vertical│ │Horizontal│ │  Pie    │ │  Line   │ │  Area   │ │ Donut   │      │ │
-│  │  │   Bar   │ │   Bar   │ │ Chart   │ │ Chart   │ │ Chart   │ │ Chart   │      │ │
+│  │  │   VBC   │ │   HBC   │ │   PG    │ │   MPG   │ │   LC    │ │   AC    │      │ │
+│  │  │ Vertical│ │Horizontal│ │  Pie    │ │ Modern  │ │  Line   │ │  Area   │      │ │
+│  │  │   Bar   │ │   Bar   │ │ Chart   │ │  Pie    │ │ Chart   │ │ Chart   │      │ │
 │  │  └─────────┘ └─────────┘ └─────────┘ └─────────┘ └─────────┘ └─────────┘      │ │
+│  │  ┌─────────┐                                                                    │ │
+│  │  │   DG    │  • Interactive tooltips with smart positioning                     │ │
+│  │  │ Donut   │  • Smooth animations and hover effects                            │ │
+│  │  │ Chart   │  • Click-to-expand functionality                                  │ │
+│  │  └─────────┘  • Responsive design for all devices                              │ │
 │  └─────────────────────────────────────────────────────────────────────────────────┘ │
 │                                      │                                              │
 │                                      ▼                                              │
@@ -38,14 +43,14 @@ AI WALLET INSIGHTS - COMPLETE SYSTEM ARCHITECTURE
 ├─────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                     │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────────────────────┐  │
-│  │  /api/wallet    │  │   /api/chat     │  │    /api/preload-transactions        │  │
+│  │  /api/wallet    │  │   /api/chat     │  │    /api/prefetch-data               │  │
 │  │                 │  │                 │  │                                     │  │
 │  │ • Fetch wallet  │  │ • Process chat  │  │ • Background data loading           │  │
 │  │   data          │  │   messages      │  │ • Transaction aggregation           │  │
-│  │ • Generate AI   │  │ • Agent routing │  │ • Cache management                  │  │
-│  │   summary       │  │ • Graph protocol│  │ • Performance optimization          │  │
-│  │ • Return wallet │  │   parsing       │  │                                     │  │
-│  │   analytics     │  │ • Response gen  │  │                                     │  │
+│  │ • Generate AI   │  │ • ADK agent     │  │ • Smart cache management            │  │
+│  │   summary       │  │   processing    │  │ • Incremental updates               │  │
+│  │ • Return wallet │  │ • Graph protocol│  │                                     │  │
+│  │   analytics     │  │   detection     │  │                                     │  │
 │  └─────────────────┘  └─────────────────┘  └─────────────────────────────────────┘  │
 │           │                     │                            │                      │
 └───────────┼─────────────────────┼────────────────────────────┼──────────────────────┘
@@ -56,55 +61,133 @@ AI WALLET INSIGHTS - COMPLETE SYSTEM ARCHITECTURE
 ├─────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                     │
 │  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
-│  │                           AI SERVICE (ai-service.ts)                           │ │
+│  │                   ADK-TS FRAMEWORK INTEGRATION                                 │ │
+│  │                   (adk-framework-integration.ts)                               │ │
+│  │                                                                                 │ │
+│  │  ┌─────────────────────────────────────────────────────────────────────────────┐ │ │
+│  │  │                        BlockIQ Agent                                        │ │ │
+│  │  │                                                                             │ │ │
+│  │  │  • Multi-provider AI support (OpenAI, Google, Anthropic, Groq, HF)        │ │ │
+│  │  │  • Automatic model name normalization                                      │ │ │
+│  │  │  • MCP tool integration via ADK                                            │ │ │
+│  │  │  • Conversation state management                                           │ │ │
+│  │  │  • Agent health monitoring                                                 │ │ │
+│  │  │  • Provider-agnostic configuration                                         │ │ │
+│  │  └─────────────────────────────────────────────────────────────────────────────┘ │ │
+│  │                                                                                 │ │
+│  │  ┌─────────────────────────────────────────────────────────────────────────────┐ │ │
+│  │  │                    Specialized Instructions                                 │ │ │
+│  │  │                                                                             │ │ │
+│  │  │  • Blockchain data analysis expertise                                      │ │ │
+│  │  │  • Graph Protocol generation rules                                         │ │ │
+│  │  │  • STX conversion guidelines (micro STX to STX)                            │ │ │
+│  │  │  • Multi-turn tool calling strategy                                        │ │ │
+│  │  │  • Response formatting rules (plain text, no markdown)                     │ │ │
+│  │  │  • Wallet context awareness                                                │ │ │
+│  │  └─────────────────────────────────────────────────────────────────────────────┘ │ │
+│  └─────────────────────────────────────────────────────────────────────────────────┘ │
+│                                                                                     │
+│  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│  │                   MODEL CONTEXT PROTOCOL (MCP) SERVER                          │ │
+│  │                        (blockiq-mcp-server.js)                                 │ │
 │  │                                                                                 │ │
 │  │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────────────────┐ │ │
-│  │  │  Regular Mode   │  │   Agent Mode    │  │        Pro Agent Mode           │ │ │
+│  │  │ getWalletData   │  │getTransactions  │  │   executeSpiderAnalysis         │ │ │
 │  │  │                 │  │                 │  │                                 │ │ │
-│  │  │ • Instant resp  │  │ • Targeted API  │  │ • Complex analysis              │ │ │
-│  │  │ • Loaded data   │  │ • Specific data │  │ • Custom JS execution           │ │ │
-│  │  │ • Basic queries │  │ • Smart routing │  │ • Thousands of transactions     │ │ │
-│  │  │                 │  │                 │  │ • Self-healing mechanism        │ │ │
+│  │  │ • Fetch wallet  │  │ • Paginated TX  │  │ • Comprehensive analysis        │ │ │
+│  │  │   overview      │  │   retrieval     │  │ • Custom JS execution           │ │ │
+│  │  │ • Balance info  │  │ • Offset-based  │  │ • Smart caching                 │ │ │
+│  │  │ • Recent TXs    │  │   navigation    │  │ • Data aggregation              │ │ │
+│  │  │ • Metadata      │  │ • Specific TX   │  │ • Error recovery                │ │ │
+│  │  │                 │  │   lookup        │  │ • Code execution                │ │ │
 │  │  └─────────────────┘  └─────────────────┘  └─────────────────────────────────┘ │ │
 │  │                                                                                 │ │
-│  │  ┌─────────────────────────────────────────────────────────────────────────────┐ │ │
-│  │  │                      Agent Protocol Parser                                  │ │ │
-│  │  │                                                                             │ │ │
-│  │  │  {                                                                          │ │ │
-│  │  │    "action": "use_agent",                                                   │ │ │
-│  │  │    "uri": "https://api.testnet.hiro.so/extended/v1/address/...",           │ │ │
-│  │  │    "uri_data": null,                                                        │ │ │
-│  │  │    "recursive": true,                                                       │ │ │
-│  │  │    "code": "/* Custom JavaScript analysis code */"                         │ │ │
-│  │  │  }                                                                          │ │ │
-│  │  └─────────────────────────────────────────────────────────────────────────────┘ │ │
+│  │  ┌─────────────────┐  ┌─────────────────────────────────────────────────────┐  │ │
+│  │  │debugAndFixCode  │  │      preloadTransactionData                         │  │ │
+│  │  │                 │  │                                                     │  │ │
+│  │  │ • Auto-debug    │  │ • Background preloading                             │  │ │
+│  │  │ • Code fixing   │  │ • Cache warming                                     │  │ │
+│  │  │ • Re-execution  │  │ • Performance optimization                          │  │ │
+│  │  │ • Error analysis│  │ • Async data fetching                               │  │ │
+│  │  └─────────────────┘  └─────────────────────────────────────────────────────┘  │ │
 │  │                                                                                 │ │
-│  │  ┌─────────────────────────────────────────────────────────────────────────────┐ │ │
-│  │  │                      Graph Protocol Generator                               │ │ │
-│  │  │                                                                             │ │ │
-│  │  │  {                                                                          │ │ │
-│  │  │    "graph": "VBC",                                                          │ │ │
-│  │  │    "x_axis_data": ["Jan", "Feb", "Mar"],                                   │ │ │
-│  │  │    "y_axis_data": [150, 230, 180],                                         │ │ │
-│  │  │    "title": "Monthly Activity",                                             │ │ │
-│  │  │    "value_label": "Transactions",                                           │ │ │
-│  │  │    "colors": ["#3b82f6", "#8b5cf6"],                                       │ │ │
-│  │  │    "tooltip_data": { /* Rich interactive data */ }                         │ │ │
-│  │  │  }                                                                          │ │ │
-│  │  └─────────────────────────────────────────────────────────────────────────────┘ │ │
+│  │  MCP Server Features:                                                           │ │
+│  │  • Stdio transport for ADK integration                                         │ │
+│  │  • Automatic tool discovery                                                    │ │
+│  │  • Rate limiting and retry logic                                               │ │
+│  │  • Progress logging for long operations                                        │ │
+│  │  • Cache validation and management                                             │ │
+│  └─────────────────────────────────────────────────────────────────────────────────┘ │
+│                                                                                     │
+│  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│  │                      SPIDER EXECUTION ENGINE                                   │ │
+│  │                      (spider-execution.ts)                                     │ │
+│  │                                                                                 │ │
+│  │  Core executeSpiderAnalysis Implementation:                                    │ │
+│  │                                                                                 │ │
+│  │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────────────────┐ │ │
+│  │  │ Data Fetching   │  │ Code Execution  │  │    Error Recovery               │ │ │
+│  │  │                 │  │                 │  │                                 │ │ │
+│  │  │ • Batch fetching│  │ • JS runtime    │  │ • Automatic retry               │ │ │
+│  │  │ • Rate limiting │  │ • File I/O      │  │ • Code debugging                │ │ │
+│  │  │ • Progress logs │  │ • Result parse  │  │ • Up to 10 attempts             │ │ │
+│  │  │ • API throttle  │  │ • Validation    │  │ • Graceful fallback             │ │ │
+│  │  └─────────────────┘  └─────────────────┘  └─────────────────────────────────┘ │ │
+│  │                                                                                 │ │
+│  │  Background Preloading:                                                         │ │
+│  │  • Async transaction fetching                                                  │ │
+│  │  • Global state management                                                     │ │
+│  │  • Conflict prevention                                                         │ │
+│  │  • Cache synchronization                                                       │ │
 │  └─────────────────────────────────────────────────────────────────────────────────┘ │
 │                                                                                     │
 │  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
 │  │                      STACKS API SERVICE (stacks-api.ts)                        │ │
 │  │                                                                                 │ │
 │  │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────────────────┐ │ │
-│  │  │ Wallet Data     │  │ Transaction     │  │    Background Processing        │ │ │
+│  │  │ Wallet Data     │  │ Transaction     │  │    API Integration              │ │ │
 │  │  │ Fetching        │  │ Processing      │  │                                 │ │ │
-│  │  │                 │  │                 │  │ • Preload all transactions      │ │ │
-│  │  │ • Balance info  │  │ • TX analysis   │  │ • Intelligent caching           │ │ │
-│  │  │ • Recent TXs    │  │ • Aggregation   │  │ • Conflict prevention           │ │ │
-│  │  │ • Account data  │  │ • Validation    │  │ • Performance optimization      │ │ │
+│  │  │                 │  │                 │  │ • Testnet API connection        │ │ │
+│  │  │ • Balance info  │  │ • TX analysis   │  │ • Error handling                │ │ │
+│  │  │ • Recent TXs    │  │ • Aggregation   │  │ • Retry logic                   │ │ │
+│  │  │ • Account data  │  │ • Validation    │  │ • Response parsing              │ │ │
 │  │  └─────────────────┘  └─────────────────┘  └─────────────────────────────────┘ │ │
+│  └─────────────────────────────────────────────────────────────────────────────────┘ │
+│                                                                                     │
+│  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
+│  │                      GRAPH PROTOCOL SYSTEM                                     │ │
+│  │                                                                                 │ │
+│  │  AI-Generated Visualization Protocol:                                          │ │
+│  │                                                                                 │ │
+│  │  {                                                                              │ │
+│  │    "graph": "VBC",                                                              │ │
+│  │    "x_axis_data": ["Jan", "Feb", "Mar"],                                       │ │
+│  │    "y_axis_data": [1500000000, 2000000000, 1800000000],                        │ │
+│  │    "y_axis_scale": ["0", "500M", "1000M", "1500M", "2000M"],                   │ │
+│  │    "title": "Monthly STX Transfer Activity",                                    │ │
+│  │    "subtitle": "STX transferred each month",                                    │ │
+│  │    "value_label": "STX",                                                        │ │
+│  │    "colors": ["#3b82f6", "#8b5cf6", "#ec4899"],                                │ │
+│  │    "text": "Peak activity occurred in February...",                             │ │
+│  │    "tooltip_data": {                                                            │ │
+│  │      "Jan": {                                                                   │ │
+│  │        "value": 1500000000,                                                     │ │
+│  │        "info": "Winter activity period",                                        │ │
+│  │        "additionalMetrics": {                                                   │ │
+│  │          "success_rate": "98.7%",                                               │ │
+│  │          "avg_per_tx": "15M STX"                                                │ │
+│  │        }                                                                        │ │
+│  │      }                                                                          │ │
+│  │    }                                                                            │ │
+│  │  }                                                                              │ │
+│  │                                                                                 │ │
+│  │  AI Decision Making:                                                            │ │
+│  │  • Automatic graph type selection (VBC, HBC, PG, MPG, LC, AC, DG)             │ │
+│  │  • Dynamic title and subtitle generation                                       │ │
+│  │  • Context-aware color scheme selection                                        │ │
+│  │  • STX conversion (micro STX to STX for readability)                           │ │
+│  │  • Y-axis scale optimization                                                   │ │
+│  │  • Rich tooltip data generation                                                │ │
 │  └─────────────────────────────────────────────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────────────────────────────┘
                                       │
@@ -114,59 +197,117 @@ AI WALLET INSIGHTS - COMPLETE SYSTEM ARCHITECTURE
 ├─────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                     │
 │  ┌─────────────────────────────────┐  ┌─────────────────────────────────────────┐  │
-│  │        Hugging Face API         │  │           Stacks Testnet API            │  │
+│  │      AI Provider APIs           │  │      Stacks Testnet API                 │  │
 │  │                                 │  │                                         │  │
-│  │ • Multiple AI models            │  │ • Real-time blockchain data             │  │
-│  │ • openai/gpt-oss-120b (default)│  │ • Transaction history                   │  │
-│  │ • Custom model support          │  │ • Account information                   │  │
-│  │ • Configurable endpoints        │  │ • Smart contract interactions           │  │
-│  │ • User API key support          │  │ • Balance and activity data             │  │
-│  │                                 │  │                                         │  │
-│  │ ┌─────────────────────────────┐ │  │ ┌─────────────────────────────────────┐ │  │
-│  │ │    Specialized Prompts      │ │  │ │        API Endpoints Used           │ │  │
-│  │ │                             │ │  │ │                                     │ │  │
-│  │ │ • Blockchain analysis       │ │  │ │ • /extended/v1/address/{addr}       │ │  │
-│  │ │ • Graph generation          │ │  │ │ • /extended/v1/address/{addr}/      │ │  │
-│  │ │ • Agent protocol parsing    │ │  │ │   transactions                      │ │  │
-│  │ │ • Context management        │ │  │ │ • /extended/v1/address/{addr}/      │ │  │
-│  │ │ • Error correction          │ │  │ │   balances                          │ │  │
-│  │ └─────────────────────────────┘ │  │ └─────────────────────────────────────┘ │  │
-│  └─────────────────────────────────┘  └─────────────────────────────────────────┘  │
+│  │ ┌─────────────────────────────┐ │  │ • Real-time blockchain data             │  │
+│  │ │ OpenAI                      │ │  │ • Transaction history                   │  │
+│  │ │ • GPT-4, GPT-4 Turbo        │ │  │ • Account information                   │  │
+│  │ │ • GPT-3.5 Turbo             │ │  │ • Balance and activity data             │  │
+│  │ └─────────────────────────────┘ │  │                                         │  │
+│  │                                 │  │ ┌─────────────────────────────────────┐ │  │
+│  │ ┌─────────────────────────────┐ │  │ │    API Endpoints Used               │ │  │
+│  │ │ Google                      │ │  │ │                                     │ │  │
+│  │ │ • Gemini Pro                │ │  │ │ • /extended/v1/address/{addr}/      │ │  │
+│  │ │ • Gemini 1.5 Pro            │ │  │ │   balances                          │ │  │
+│  │ └─────────────────────────────┘ │  │ │ • /extended/v1/address/{addr}/      │ │  │
+│  │                                 │  │ │   transactions                      │ │  │
+│  │ ┌─────────────────────────────┐ │  │ │   ?limit={n}&offset={m}             │ │  │
+│  │ │ Anthropic                   │ │  │ │                                     │ │  │
+│  │ │ • Claude 3 Opus             │ │  │ │ Note: Currently using TESTNET       │ │  │
+│  │ │ • Claude 3 Sonnet           │ │  │ │ for safe development and testing    │ │  │
+│  │ │ • Claude 3 Haiku            │ │  │ └─────────────────────────────────────┘ │  │
+│  │ └─────────────────────────────┘ │  └─────────────────────────────────────────┘  │
+│  │                                 │                                              │
+│  │ ┌─────────────────────────────┐ │                                              │
+│  │ │ Groq                        │ │                                              │
+│  │ │ • Llama 3 models            │ │                                              │
+│  │ │ • Mixtral models            │ │                                              │
+│  │ └─────────────────────────────┘ │                                              │
+│  │                                 │                                              │
+│  │ ┌─────────────────────────────┐ │                                              │
+│  │ │ Hugging Face                │ │                                              │
+│  │ │ • Various open-source models│ │                                              │
+│  │ │ • Custom model support      │ │                                              │
+│  │ └─────────────────────────────┘ │                                              │
+│  │                                 │                                              │
+│  │ Provider Features:              │                                              │
+│  │ • User-configurable API keys    │                                              │
+│  │ • Model selection interface     │                                              │
+│  │ • Automatic failover            │                                              │
+│  │ • Rate limit handling           │                                              │
+│  └─────────────────────────────────┘                                              │
 └─────────────────────────────────────────────────────────────────────────────────────┘
                                       │
                                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                              DATA FLOW & CACHING                                   │
+│                        SMART CACHE SYSTEM (cache.tmp.json)                        │
 ├─────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                     │
 │  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
-│  │                           File System Caching                                  │ │
+│  │                      Intelligent Cache Management                              │ │
 │  │                                                                                 │ │
-│  │  cache.tmp.json ◄─── Pro Agent Mode Data Storage                               │ │
+│  │  Cache Structure:                                                               │ │
+│  │  {                                                                              │ │
+│  │    "_metadata": {                                                               │ │
+│  │      "address": "ST2QKZ4FKHAH1NQKYKYAYZPY440FEPK7GZ1R5HBP2",                    │ │
+│  │      "totalTransactions": 16413,                                                │ │
+│  │      "fetchedAt": "2025-01-21T18:53:16.123Z",                                   │ │
+│  │      "batches": 329                                                             │ │
+│  │    },                                                                           │ │
+│  │    "data": [ /* Array of transaction batches */ ]                              │ │
+│  │  }                                                                              │ │
 │  │                                                                                 │ │
-│  │  • Complete transaction history for analyzed wallets                           │ │
-│  │  • Metadata tracking (timestamps, processing status)                           │ │
-│  │  • Intelligent cache invalidation                                              │ │
-│  │  • Background refresh for frequently accessed wallets                          │ │
-│  └─────────────────────────────────────────────────────────────────────────────────┘ │
-│                                                                                     │
-│  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
-│  │                            Memory Management                                    │ │
+│  │  ┌─────────────────────────────────────────────────────────────────────────────┐ │ │
+│  │  │                    Cache Validation Process                                 │ │ │
+│  │  │                                                                             │ │ │
+│  │  │  Step 1: Address Comparison                                                │ │ │
+│  │  │  • Check if requested address matches cached address                       │ │ │
+│  │  │  • If different → Clear cache, fetch fresh data                            │ │ │
+│  │  │                                                                             │ │ │
+│  │  │  Step 2: Transaction Count Verification                                    │ │ │
+│  │  │  • Fetch ONLY current transaction count (lightweight API call)             │ │ │
+│  │  │  • Compare with cached count                                               │ │ │
+│  │  │                                                                             │ │ │
+│  │  │  Step 3: Smart Update Decision                                             │ │ │
+│  │  │  • Counts match → Use cache (instant response, 0 API calls)                │ │ │
+│  │  │  • Counts differ → Incremental update only                                 │ │ │
+│  │  └─────────────────────────────────────────────────────────────────────────────┘ │ │
 │  │                                                                                 │ │
-│  │  • React state management with hooks                                           │ │
-│  │  • Context API for global wallet data                                          │ │
-│  │  • Local storage for user preferences                                          │ │
-│  │  • Conversation history persistence                                            │ │
-│  │  • Graph protocol caching                                                      │ │
+│  │  ┌─────────────────────────────────────────────────────────────────────────────┐ │ │
+│  │  │                    Incremental Update Strategy                              │ │ │
+│  │  │                                                                             │ │ │
+│  │  │  Example: Cached = 16,000 txs, Current = 16,010 txs                        │ │ │
+│  │  │                                                                             │ │ │
+│  │  │  Calculation: 16,010 - 16,000 = 10 new transactions                        │ │ │
+│  │  │                                                                             │ │ │
+│  │  │  Action:                                                                    │ │ │
+│  │  │  1. Fetch only 10 new transactions: limit=10&offset=0                      │ │ │
+│  │  │  2. Prepend new transactions to existing cache                             │ │ │
+│  │  │  3. Update metadata (count, timestamp)                                     │ │ │
+│  │  │  4. Preserve all historical data                                           │ │ │
+│  │  │                                                                             │ │ │
+│  │  │  Benefits:                                                                  │ │ │
+│  │  │  • 99.9% reduction in API calls for returning users                        │ │ │
+│  │  │  • Minimal bandwidth usage                                                 │ │ │
+│  │  │  • Always up-to-date data                                                  │ │ │
+│  │  │  • No redundant fetching                                                   │ │ │
+│  │  └─────────────────────────────────────────────────────────────────────────────┘ │ │
+│  │                                                                                 │ │
+│  │  Cache Lifecycle:                                                               │ │
+│  │  • Initial Analysis: Full fetch and cache creation                             │ │
+│  │  • Same Address, No New TXs: Instant cache reuse (0 API calls)                │ │
+│  │  • Same Address, New TXs: Incremental update only                              │ │
+│  │  • Different Address: Cache cleared, new full fetch                            │ │
+│  │  • Background Preloading: Automatic cache warming                              │ │
 │  └─────────────────────────────────────────────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────────────────────────────┘
 
-DATA FLOW SEQUENCE DIAGRAM
-===========================
+DATA FLOW SEQUENCE DIAGRAMS
+============================
 
 User Input → Wallet Analysis Flow:
 ┌─────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│User │    │WalletInput  │    │/api/wallet  │    │stacks-api.ts│    │ai-service.ts│
+│User │    │WalletInput  │    │/api/wallet  │    │stacks-api.ts│    │ADK Agent    │
 └──┬──┘    └──────┬──────┘    └──────┬──────┘    └──────┬──────┘    └──────┬──────┘
    │              │                  │                  │                  │
    │ Enter Address│                  │                  │                  │
@@ -183,9 +324,9 @@ User Input → Wallet Analysis Flow:
    │◄─────────────┤                  │                  │                  │
    │              │                  │                  │                  │
 
-User Chat → AI Analysis Flow:
+User Chat → AI Analysis with MCP Tools:
 ┌─────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│User │    │ChatInterface│    │/api/chat    │    │ai-service.ts│    │GraphRenderer│
+│User │    │ChatInterface│    │/api/chat    │    │ADK Agent    │    │MCP Server   │
 └──┬──┘    └──────┬──────┘    └──────┬──────┘    └──────┬──────┘    └──────┬──────┘
    │              │                  │                  │                  │
    │ Ask Question │                  │                  │                  │
@@ -195,71 +336,177 @@ User Chat → AI Analysis Flow:
    │              │                  │ Process query    │                  │
    │              │                  ├─────────────────►│                  │
    │              │                  │                  │                  │
-   │              │                  │ ┌─────────────────────────────────┐ │
-   │              │                  │ │    Agent Mode Decision Tree     │ │
-   │              │                  │ │                                 │ │
-   │              │                  │ │ Simple Query → Regular Mode     │ │
-   │              │                  │ │ Specific Data → Agent Mode      │ │
-   │              │                  │ │ Complex Analysis → Pro Agent    │ │
-   │              │                  │ │ Visual Request → Graph Protocol │ │
-   │              │                  │ └─────────────────────────────────┘ │
+   │              │                  │                  │ Call MCP tool    │
+   │              │                  │                  ├─────────────────►│
    │              │                  │                  │                  │
-   │              │                  │ Response + Graph │                  │
+   │              │                  │                  │ ┌──────────────────────────┐
+   │              │                  │                  │ │ MCP Tool Selection:      │
+   │              │                  │                  │ │ • getWalletData          │
+   │              │                  │                  │ │ • getTransactions        │
+   │              │                  │                  │ │ • executeSpiderAnalysis  │
+   │              │                  │                  │ │ • debugAndFixCode        │
+   │              │                  │                  │ │ • preloadTransactionData │
+   │              │                  │                  │ └──────────────────────────┘
+   │              │                  │                  │                  │
+   │              │                  │                  │ Tool result      │
+   │              │                  │                  │◄─────────────────┤
+   │              │                  │                  │                  │
+   │              │                  │ Response/Graph   │                  │
    │              │                  │◄─────────────────┤                  │
    │              │◄─────────────────┤                  │                  │
-   │              │ Render Graph     │                  │                  │
-   │              ├─────────────────────────────────────────────────────────►│
    │◄─────────────┤                  │                  │                  │
+   │              │                  │                  │                  │
 
-AGENT MODE DECISION MATRIX
-==========================
+executeSpiderAnalysis Workflow:
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│ADK Agent    │    │MCP Server   │    │Cache System │    │Stacks API   │    │JS Runtime   │
+└──────┬──────┘    └──────┬──────┘    └──────┬──────┘    └──────┬──────┘    └──────┬──────┘
+       │                  │                  │                  │                  │
+       │ executeSpider    │                  │                  │                  │
+       │ Analysis(addr,   │                  │                  │                  │
+       │ code, total)     │                  │                  │                  │
+       ├─────────────────►│                  │                  │                  │
+       │                  │ Check cache      │                  │                  │
+       │                  ├─────────────────►│                  │                  │
+       │                  │                  │                  │                  │
+       │                  │ ┌────────────────────────────────────────────────────┐ │
+       │                  │ │ Cache Decision:                                    │ │
+       │                  │ │ • Valid cache exists → Use cached data             │ │
+       │                  │ │ • No cache → Fetch all transactions                │ │
+       │                  │ │ • Outdated cache → Incremental update              │ │
+       │                  │ └────────────────────────────────────────────────────┘ │
+       │                  │                  │                  │                  │
+       │                  │ Cache status     │                  │                  │
+       │                  │◄─────────────────┤                  │                  │
+       │                  │                  │                  │                  │
+       │                  │ Fetch TXs (if needed)               │                  │
+       │                  ├────────────────────────────────────►│                  │
+       │                  │                  │                  │                  │
+       │                  │ Transaction data │                  │                  │
+       │                  │◄────────────────────────────────────┤                  │
+       │                  │                  │                  │                  │
+       │                  │ Update cache     │                  │                  │
+       │                  ├─────────────────►│                  │                  │
+       │                  │                  │                  │                  │
+       │                  │ Execute JS code  │                  │                  │
+       │                  ├────────────────────────────────────────────────────────►│
+       │                  │                  │                  │                  │
+       │                  │                  │                  │ ┌──────────────────┐
+       │                  │                  │                  │ │ Code reads from  │
+       │                  │                  │                  │ │ cache.tmp.json   │
+       │                  │                  │                  │ │ and processes    │
+       │                  │                  │                  │ │ all transactions │
+       │                  │                  │                  │ └──────────────────┘
+       │                  │                  │                  │                  │
+       │                  │ Result or Error  │                  │                  │
+       │                  │◄────────────────────────────────────────────────────────┤
+       │                  │                  │                  │                  │
+       │                  │ ┌────────────────────────────────────────────────────┐ │
+       │                  │ │ If Error:                                          │ │
+       │                  │ │ • Call debugAndFixCode                             │ │
+       │                  │ │ • AI generates fixed code                          │ │
+       │                  │ │ • Re-execute (up to 10 times)                      │ │
+       │                  │ └────────────────────────────────────────────────────┘ │
+       │                  │                  │                  │                  │
+       │ Analysis result  │                  │                  │                  │
+       │◄─────────────────┤                  │                  │                  │
+       │                  │                  │                  │                  │
 
-┌─────────────────┬─────────────────┬─────────────────┬─────────────────────┐
-│   Query Type    │   Data Needed   │   Agent Mode    │    Response Time    │
-├─────────────────┼─────────────────┼─────────────────┼─────────────────────┤
-│ "What's balance"│ Loaded data     │ Regular Mode    │ < 1 second          │
-│ "TX count"      │ Basic info      │ Regular Mode    │ < 1 second          │
-│ "Last TX"       │ Recent data     │ Regular Mode    │ < 1 second          │
-├─────────────────┼─────────────────┼─────────────────┼─────────────────────┤
-│ "TX #500"       │ Specific TX     │ Agent Mode      │ 2-3 seconds         │
-│ "March 15 data" │ Date range      │ Agent Mode      │ 2-3 seconds         │
-│ "Contract calls"│ Filtered data   │ Agent Mode      │ 2-3 seconds         │
-├─────────────────┼─────────────────┼─────────────────┼─────────────────────┤
-│ "Top recipients"│ All TX analysis │ Pro Agent Mode  │ 3-5 seconds         │
-│ "Spending patterns"│ Complex calc │ Pro Agent Mode  │ 3-5 seconds         │
-│ "Unique addresses"│ Full dataset  │ Pro Agent Mode  │ 3-5 seconds         │
-├─────────────────┼─────────────────┼─────────────────┼─────────────────────┤
-│ "Show chart"    │ Visual data     │ Graph Protocol  │ 4-6 seconds         │
-│ "Monthly graph" │ Aggregated data │ Graph Protocol  │ 4-6 seconds         │
-│ "Pie chart"     │ Distribution    │ Graph Protocol  │ 4-6 seconds         │
-└─────────────────┴─────────────────┴─────────────────┴─────────────────────┘
+Graph Protocol Generation Flow:
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│User Request │    │ADK Agent    │    │MCP Server   │    │ChatInterface│    │GraphRenderer│
+└──────┬──────┘    └──────┬──────┘    └──────┬──────┘    └──────┬──────┘    └──────┬──────┘
+       │                  │                  │                  │                  │
+       │ "Show monthly    │                  │                  │                  │
+       │ activity chart"  │                  │                  │                  │
+       ├─────────────────►│                  │                  │                  │
+       │                  │                  │                  │                  │
+       │                  │ ┌────────────────────────────────────────────────────┐ │
+       │                  │ │ AI Analysis:                                       │ │
+       │                  │ │ • Determine data needed (monthly transactions)     │ │
+       │                  │ │ • Select graph type (VBC for time series)          │ │
+       │                  │ │ • Plan data aggregation strategy                   │ │
+       │                  │ └────────────────────────────────────────────────────┘ │
+       │                  │                  │                  │                  │
+       │                  │ executeSpider    │                  │                  │
+       │                  │ Analysis(code)   │                  │                  │
+       │                  ├─────────────────►│                  │                  │
+       │                  │                  │                  │                  │
+       │                  │ ┌────────────────────────────────────────────────────┐ │
+       │                  │ │ Custom JS Code:                                    │ │
+       │                  │ │ • Read cache.tmp.json                              │ │
+       │                  │ │ • Group transactions by month                      │ │
+       │                  │ │ • Convert micro STX to STX (÷ 1,000,000)           │ │
+       │                  │ │ • Calculate totals per month                       │ │
+       │                  │ │ • Return aggregated data                           │ │
+       │                  │ └────────────────────────────────────────────────────┘ │
+       │                  │                  │                  │                  │
+       │                  │ Aggregated data  │                  │                  │
+       │                  │◄─────────────────┤                  │                  │
+       │                  │                  │                  │                  │
+       │                  │ ┌────────────────────────────────────────────────────┐ │
+       │                  │ │ Generate Graph Protocol JSON:                      │ │
+       │                  │ │ • graph: "VBC"                                     │ │
+       │                  │ │ • x_axis_data: ["Jan", "Feb", "Mar", ...]          │ │
+       │                  │ │ • y_axis_data: [1500000000, 2000000000, ...]       │ │
+       │                  │ │ • y_axis_scale: ["0", "500M", "1000M", ...]        │ │
+       │                  │ │ • title: "Monthly STX Transfer Activity"           │ │
+       │                  │ │ • colors: ["#3b82f6", "#8b5cf6", ...]              │ │
+       │                  │ │ • tooltip_data: { enhanced metrics }               │ │
+       │                  │ │ • text: "Peak activity occurred in..."             │ │
+       │                  │ └────────────────────────────────────────────────────┘ │
+       │                  │                  │                  │                  │
+       │ Graph Protocol   │                  │                  │                  │
+       │ JSON             │                  │                  │                  │
+       │◄─────────────────┤                  │                  │                  │
+       │                  │                  │                  │                  │
+       │ Display graph    │                  │                  │                  │
+       ├────────────────────────────────────────────────────────►│                  │
+       │                  │                  │                  │                  │
+       │                  │                  │                  │ Render graph     │
+       │                  │                  │                  ├─────────────────►│
+       │                  │                  │                  │                  │
+       │                  │                  │                  │ ┌──────────────────┐
+       │                  │                  │                  │ │ • Parse JSON     │
+       │                  │                  │                  │ │ • Create SVG     │
+       │                  │                  │                  │ │ • Add animations │
+       │                  │                  │                  │ │ • Setup tooltips │
+       │                  │                  │                  │ │ • Enable clicks  │
+       │                  │                  │                  │ └──────────────────┘
+       │                  │                  │                  │                  │
+       │ Interactive      │                  │                  │                  │
+       │ visualization    │                  │                  │                  │
+       │◄────────────────────────────────────────────────────────────────────────────┤
+       │                  │                  │                  │                  │
 
-GRAPH PROTOCOL WORKFLOW
-=======================
+MCP TOOL USAGE PATTERNS
+========================
 
-Natural Language Request → Graph Generation:
-
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│ "Show monthly   │    │ AI analyzes     │    │ Pro Agent Mode  │    │ Graph Protocol  │
-│ activity chart" │───►│ request type    │───►│ fetches data    │───►│ JSON generated  │
-└─────────────────┘    └─────────────────┘    └─────────────────┘    └─────────────────┘
-                                │                        │                        │
-                                ▼                        ▼                        ▼
-                       ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-                       │ Determines:     │    │ Executes:       │    │ Contains:       │
-                       │ • Chart type    │    │ • Custom JS     │    │ • Chart spec    │
-                       │ • Data needs    │    │ • Data aggreg.  │    │ • Interactive   │
-                       │ • Time range    │    │ • Processing    │    │ • Styling       │
-                       └─────────────────┘    └─────────────────┘    └─────────────────┘
-                                                                              │
-                                                                              ▼
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│ User interacts  │◄───│ Interactive     │◄───│ GraphRenderer   │◄───│ Frontend        │
-│ with chart      │    │ features active │    │ creates SVG     │    │ receives JSON   │
-└─────────────────┘    └─────────────────┘    └─────────────────┘    └─────────────────┘
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                              Query Type Matrix                                     │
+├─────────────────┬─────────────────┬─────────────────┬─────────────────────────────┤
+│   Query Type    │   MCP Tool      │   Data Scope    │    Response Time            │
+├─────────────────┼─────────────────┼─────────────────┼─────────────────────────────┤
+│ "What's balance"│ getWalletData   │ Basic info      │ < 2 seconds                 │
+│ "TX count"      │ getWalletData   │ Overview        │ < 2 seconds                 │
+│ "Recent TXs"    │ getWalletData   │ Last 20 TXs     │ < 2 seconds                 │
+├─────────────────┼─────────────────┼─────────────────┼─────────────────────────────┤
+│ "TX #500"       │ getTransactions │ Specific TX     │ 2-3 seconds                 │
+│ "TX range"      │ getTransactions │ Paginated       │ 2-3 seconds                 │
+│ "Specific date" │ getTransactions │ Filtered        │ 2-3 seconds                 │
+├─────────────────┼─────────────────┼─────────────────┼─────────────────────────────┤
+│ "Top recipients"│ executeSpider   │ All TXs         │ 3-5 seconds (cached)        │
+│ "Unique addrs"  │ executeSpider   │ Full analysis   │ 3-5 seconds (cached)        │
+│ "Patterns"      │ executeSpider   │ Complex calc    │ 3-5 seconds (cached)        │
+├─────────────────┼─────────────────┼─────────────────┼─────────────────────────────┤
+│ "Show chart"    │ executeSpider + │ Aggregated +    │ 4-6 seconds                 │
+│ "Monthly graph" │ Graph Protocol  │ Visualization   │ 4-6 seconds                 │
+│ "Pie chart"     │ executeSpider + │ Distribution +  │ 4-6 seconds                 │
+│                 │ Graph Protocol  │ Rendering       │                             │
+└─────────────────┴─────────────────┴─────────────────┴─────────────────────────────┘
 
 PERFORMANCE OPTIMIZATION LAYERS
-===============================
+================================
 
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
 │                              CACHING STRATEGY                                      │
@@ -267,7 +514,7 @@ PERFORMANCE OPTIMIZATION LAYERS
 │                                                                                     │
 │  Level 1: Browser Cache                                                             │
 │  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
-│  │ • Local Storage: User preferences, conversation history                         │ │
+│  │ • Local Storage: User preferences, API keys, conversation history              │ │
 │  │ • Session Storage: Temporary wallet data, UI state                             │ │
 │  │ • Memory Cache: React state, component cache                                   │ │
 │  └─────────────────────────────────────────────────────────────────────────────────┘ │
@@ -276,14 +523,21 @@ PERFORMANCE OPTIMIZATION LAYERS
 │  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
 │  │ • API Response Cache: Wallet data, transaction lists                           │ │
 │  │ • Graph Protocol Cache: Generated visualizations                               │ │
-│  │ • AI Response Cache: Conversation context, prompt results                      │ │
+│  │ • ADK Agent Cache: Conversation context, tool results                          │ │
 │  └─────────────────────────────────────────────────────────────────────────────────┘ │
 │                                                                                     │
-│  Level 3: File System Cache                                                        │
+│  Level 3: File System Cache (cache.tmp.json)                                       │
 │  ┌─────────────────────────────────────────────────────────────────────────────────┐ │
-│  │ • cache.tmp.json: Complete transaction datasets                                │ │
-│  │ • Metadata files: Processing status, timestamps                                │ │
-│  │ • Background processing: Preloaded data for instant access                     │ │
+│  │ • Complete transaction datasets with metadata                                  │ │
+│  │ • Intelligent validation (address + count comparison)                          │ │
+│  │ • Incremental updates (fetch only new transactions)                            │ │
+│  │ • Background preloading for instant access                                     │ │
+│  │                                                                                 │ │
+│  │ Performance Impact:                                                             │ │
+│  │ • 100,000+ TX wallets: 2 seconds (vs 5+ minutes without cache)                │ │
+│  │ • Returning users: Instant (0 API calls if no new TXs)                         │ │
+│  │ • New transactions: Minimal fetching (10 new vs 100,000 total)                │ │
+│  │ • API rate limit friendly: 99.9% reduction in redundant calls                 │ │
 │  └─────────────────────────────────────────────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────────────────────────────┘
 
@@ -291,20 +545,20 @@ ERROR HANDLING & RECOVERY SYSTEM
 =================================
 
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                           SELF-HEALING AI MECHANISM                                │
+│                      SELF-CORRECTING AI MECHANISM                                  │
 ├─────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                     │
-│  Code Execution Error → AI Correction Loop:                                        │
+│  debugAndFixCode Tool - Automatic Error Recovery:                                  │
 │                                                                                     │
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐         │
-│  │ Execute JS  │───►│ Error       │───►│ Send error  │───►│ AI generates│         │
-│  │ code        │    │ detected    │    │ to AI       │    │ fixed code  │         │
+│  │ Execute JS  │───►│ Error       │───►│ debugAnd    │───►│ AI analyzes │         │
+│  │ code        │    │ detected    │    │ FixCode     │    │ error       │         │
 │  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘         │
 │         ▲                                                          │               │
 │         │                                                          ▼               │
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐         │
-│  │ Success!    │◄───│ Retry count │◄───│ Validate    │◄───│ Execute     │         │
-│  │ Return      │    │ < 10?       │    │ new code    │    │ fixed code  │         │
+│  │ Success!    │◄───│ Retry count │◄───│ Validate    │◄───│ Generate    │         │
+│  │ Return      │    │ < 10?       │    │ fixed code  │    │ fixed code  │         │
 │  │ result      │    │             │    │             │    │             │         │
 │  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘         │
 │                             │                                                      │
@@ -314,29 +568,212 @@ ERROR HANDLING & RECOVERY SYSTEM
 │                      │ fallback    │                                              │
 │                      │ response    │                                              │
 │                      └─────────────┘                                              │
+│                                                                                     │
+│  Common Auto-Fixes Applied:                                                        │
+│  • Replace 'return' with 'console.log(JSON.stringify())'                          │
+│  • Add missing 'fs.readFileSync' setup                                             │
+│  • Fix syntax errors (missing semicolons, brackets)                                │
+│  • Correct date field usage (burn_block_time vs block_time_iso)                   │
+│  • Fix data extraction patterns (fileData.data || fileData)                        │
+│  • Add proper error handling                                                       │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                         API ERROR HANDLING                                         │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│  Stacks API Error Handling:                                                         │
+│  • Rate limiting detection (429 status)                                             │
+│  • Automatic retry with exponential backoff                                         │
+│  • Graceful degradation for partial failures                                        │
+│  • User-friendly error messages                                                     │
+│                                                                                     │
+│  AI Provider Error Handling:                                                        │
+│  • API key validation                                                               │
+│  • Model availability checks                                                        │
+│  • Timeout protection                                                               │
+│  • Fallback to alternative providers (if configured)                                │
+│                                                                                     │
+│  MCP Server Error Handling:                                                         │
+│  • Tool execution timeouts                                                          │
+│  • Invalid parameter validation                                                     │
+│  • Resource cleanup on errors                                                       │
+│  • Detailed error logging for debugging                                             │
 └─────────────────────────────────────────────────────────────────────────────────────┘
 
 SECURITY & VALIDATION LAYERS
-============================
+=============================
 
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
 │                              INPUT VALIDATION                                      │
 ├─────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                     │
 │  Frontend Validation:                                                               │
-│  • Stacks address format validation                                                 │
+│  • Stacks address format validation (ST/SP prefix, length check)                   │
 │  • Input sanitization and XSS prevention                                           │
 │  • Rate limiting for API calls                                                     │
+│  • Client-side data validation                                                     │
 │                                                                                     │
 │  Backend Validation:                                                                │
 │  • API key validation and secure storage                                           │
 │  • Request payload validation                                                      │
 │  • Blockchain data verification                                                    │
+│  • CORS and security headers                                                       │
 │                                                                                     │
 │  Code Execution Security:                                                           │
-│  • Sandboxed JavaScript execution                                                  │
-│  • File system access restrictions                                                 │
+│  • Sandboxed JavaScript execution (Node.js child process)                          │
+│  • File system access restrictions (read-only cache access)                        │
 │  • Resource usage monitoring                                                       │
 │  • Timeout protection for long-running operations                                  │
+│  • No network access from executed code                                            │
+│  • Automatic cleanup of temporary files                                            │
 └─────────────────────────────────────────────────────────────────────────────────────┘
 
+TECHNOLOGY STACK
+================
+
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                              FRONTEND STACK                                        │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│  Framework & Runtime:                                                               │
+│  • Next.js 15 - React framework with App Router                                    │
+│  • React 19 - Latest React with concurrent features                                │
+│  • TypeScript 5 - Type-safe development                                            │
+│                                                                                     │
+│  Styling & Animation:                                                               │
+│  • TailwindCSS 4 - Utility-first CSS framework                                     │
+│  • Framer Motion 11 - Smooth animations and transitions                            │
+│  • Custom CSS - Glassmorphism and gradient effects                                 │
+│                                                                                     │
+│  State Management:                                                                  │
+│  • React Hooks - useState, useEffect, useRef                                       │
+│  • Local Storage - User preferences and settings                                   │
+│  • Session Storage - Temporary data                                                │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                              BACKEND STACK                                         │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│  Core Framework:                                                                    │
+│  • ADK-TS (Agent Development Kit for TypeScript) v0.5.0                            │
+│    - Multi-provider AI support                                                     │
+│    - MCP (Model Context Protocol) integration                                      │
+│    - Agent orchestration and lifecycle management                                  │
+│                                                                                     │
+│  API Layer:                                                                         │
+│  • Next.js API Routes - Server-side endpoints                                      │
+│  • Node.js Runtime - JavaScript code execution                                     │
+│  • File System API - Cache management                                              │
+│                                                                                     │
+│  MCP Server:                                                                        │
+│  • @modelcontextprotocol/sdk - Official MCP SDK                                    │
+│  • Stdio Transport - Communication with ADK agent                                  │
+│  • Custom tool implementations                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                         AI PROVIDERS & MODELS                                      │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│  Supported Providers (via ADK-TS):                                                 │
+│  • OpenAI - GPT-4, GPT-4 Turbo, GPT-3.5 Turbo                                      │
+│  • Google - Gemini Pro, Gemini 1.5 Pro                                             │
+│  • Anthropic - Claude 3 Opus, Sonnet, Haiku                                        │
+│  • Groq - Llama 3, Mixtral models                                                  │
+│  • Hugging Face - Various open-source models                                       │
+│                                                                                     │
+│  Model Configuration:                                                               │
+│  • User-selectable provider and model                                              │
+│  • Automatic model name normalization                                              │
+│  • API key management through UI                                                   │
+│  • Provider-specific optimizations                                                 │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                         BLOCKCHAIN INTEGRATION                                     │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│  Stacks Blockchain:                                                                 │
+│  • Testnet API (api.testnet.hiro.so)                                               │
+│  • REST API endpoints for wallet and transaction data                              │
+│  • Real-time blockchain data access                                                │
+│                                                                                     │
+│  Data Types:                                                                        │
+│  • Wallet balances (STX and tokens)                                                │
+│  • Transaction history (token transfers, contract calls, etc.)                     │
+│  • Account information and metadata                                                │
+│  • Smart contract interactions                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+
+KEY ARCHITECTURAL DECISIONS
+===========================
+
+1. ADK-TS Framework Choice
+   • Provides unified interface for multiple AI providers
+   • Built-in MCP support eliminates custom tool integration
+   • Automatic error handling and retry mechanisms
+   • Production-ready agent orchestration
+
+2. MCP Server Architecture
+   • Separates blockchain logic from AI logic
+   • Enables tool reusability across different agents
+   • Follows official MCP specification for compatibility
+   • Allows independent scaling of components
+
+3. Smart Cache System
+   • Dramatically reduces API calls (99.9% for returning users)
+   • Incremental updates minimize bandwidth usage
+   • Metadata-driven validation ensures data freshness
+   • Background preloading improves perceived performance
+
+4. Graph Protocol Design
+   • AI has full autonomy in visualization creation
+   • JSON-based protocol is language-agnostic
+   • Supports 7 different graph types for flexibility
+   • Rich tooltip data enables interactive exploration
+
+5. Self-Correcting AI
+   • debugAndFixCode tool enables autonomous error recovery
+   • Up to 10 retry attempts with progressive fixes
+   • Reduces user frustration from code execution errors
+   • Improves overall system reliability
+
+6. Testnet-First Approach
+   • Safe development and testing environment
+   • No risk to real assets during experimentation
+   • Easy transition to mainnet (endpoint configuration only)
+   • Allows for aggressive optimization without consequences
+
+DEPLOYMENT ARCHITECTURE
+=======================
+
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                              PRODUCTION DEPLOYMENT                                 │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│  Hosting:                                                                           │
+│  • Vercel - Next.js optimized hosting                                              │
+│  • Edge Functions - Global distribution                                            │
+│  • Automatic HTTPS and CDN                                                         │
+│                                                                                     │
+│  Environment:                                                                       │
+│  • Node.js 18+ runtime                                                             │
+│  • Serverless functions for API routes                                             │
+│  • File system access for caching                                                  │
+│                                                                                     │
+│  Configuration:                                                                     │
+│  • No environment variables required                                               │
+│  • All settings managed through UI                                                 │
+│  • API keys stored in browser local storage                                        │
+│                                                                                     │
+│  Monitoring:                                                                        │
+│  • Console logging for debugging                                                   │
+│  • Error tracking and reporting                                                    │
+│  • Performance metrics                                                             │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+
+This architecture enables BlockIQ to provide intelligent blockchain analytics through
+conversational AI, with performance optimizations that make analyzing wallets with
+hundreds of thousands of transactions feel instant.
