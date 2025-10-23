@@ -37,7 +37,7 @@ export default function HeroSection({ onGetStarted }: HeroSectionProps) {
           transition={{ delay: 0.6 }}
           onClick={() => {
             // Trigger the settings modal from the parent page
-            const event = new CustomEvent('openSettings');
+            const event = new CustomEvent("openSettings");
             window.dispatchEvent(event);
           }}
           className="p-3 text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-gray-800/50"
@@ -76,8 +76,13 @@ export default function HeroSection({ onGetStarted }: HeroSectionProps) {
               style={{ marginTop: "20px" }}
               className="inline-flex items-center space-x-3 py-3"
             >
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">B</span>
+              <div className="w-8 h-8 flex items-center justify-center">
+                <img
+                  src="/logo.png"
+                  alt="BlockIQ Logo"
+                  className="w-full object-contain"
+                  style={{maxWidth: "300px", width: "212px", position: "absolute", top: "-1px"}}
+                />
               </div>
               <span className="text-lg font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                 BlockIQ

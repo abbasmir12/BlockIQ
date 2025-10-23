@@ -179,8 +179,12 @@ export default function Home() {
         >
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-blue-600 rounded-lg">
-                <Zap className="w-6 h-6 text-white" />
+              <div className="relative w-10 h-10">
+                <img
+                  src="/logo.png"
+                  alt="BlockIQ Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-white">BlockIQ</h1>
