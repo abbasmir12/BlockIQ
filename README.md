@@ -260,6 +260,7 @@ console.log(JSON.stringify({ topRecipients }));
 
 ### Visual Analytics and Graph Protocol
 
+![modernpiechart](public/mpg.png)
 BlockIQ introduces a revolutionary Graph Protocol system that enables AI to automatically generate interactive visualizations from natural language requests.
 
 #### Graph Protocol Format
